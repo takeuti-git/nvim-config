@@ -44,3 +44,5 @@ map({"n", "i"}, '<left>', '<cmd>echo "Use h to move!!"<CR>')
 map({"n", "i"}, '<right>', '<cmd>echo "Use l to move!!"<CR>')
 map({"n", "i"}, '<up>', '<cmd>echo "Use k to move!!"<CR>')
 map({"n", "i"}, '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })

@@ -44,9 +44,15 @@ opt.autowriteall = true
 opt.mouse = 'a'
 
 -- Decrease mapped sequence wait time
-vim.o.timeoutlen = 1000
+opt.timeoutlen = 1000
 
 -- Configure how new splits should be opened
-vim.o.splitright = true
-vim.o.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
+
+opt.breakindent = true
+opt.updatetime = 250
+opt.list = true
+opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.confirm = true
 
