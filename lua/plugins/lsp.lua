@@ -85,5 +85,8 @@ return {
             update_in_insert = true,
             severity_sort = true,
         })
+
+        vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "LSP Rename Symbol" })
+
     end,
 }
