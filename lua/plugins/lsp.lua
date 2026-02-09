@@ -23,20 +23,19 @@ return {
         -----------------------------------------
         require("mason").setup()
 
-        local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         require("mason-lspconfig").setup({
             handlers = {
                 function(server_name)
-                    lspconfig[server_name].setup({
+                    vim.lsp.config(server_name, {
                         capabilities = capabilities,
                     })
                 end,
             },
         })
 
-        lspconfig.lua_ls.setup({
+        vim.lsp.config("lua_ls", {
             capabilities = capabilities,
             settings = {
                 Lua = {
@@ -54,13 +53,6 @@ return {
         -- FileType起動
         ------------------------------------
 
-        -- vim.api.nvim_create_autocmd("FileType", {
-        --     callback = function(args)
-        --         for _, cfg in pairs(vim.lsp.config) do
-        --             vim.lsp.start(cfg, { bufnr = args.buf })
-        --         end
-        --     end,
-        -- })
         vim.api.nvim_create_autocmd("FileType", {
             callback = function(args)
                 local ft = vim.bo[args.buf].filetype
