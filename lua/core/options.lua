@@ -19,6 +19,9 @@ opt.tabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = true
 
+-- cmd
+opt.showcmd = true
+
 -- visuals
 vim.g.have_nerd_font = true
 -- opt.showmode = true -- mode(NORMAL, INSERT, VISUAL)を画面下に表示
