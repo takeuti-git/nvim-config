@@ -7,7 +7,8 @@ opt.encoding = 'utf-8'
 opt.number = true
 opt.relativenumber = true
 opt.cursorline = true
-opt.scrolloff = 8
+opt.scrolloff = 0
+opt.wrap = false
 
 -- indent
 opt.smartindent = true
