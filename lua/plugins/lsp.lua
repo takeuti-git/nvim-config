@@ -14,7 +14,9 @@ return {
                 local opts = { buffer = args.buf }
                 vim.keymap.set("n", "gh", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+                vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                 vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, opts)
             end,
         })
 
@@ -58,27 +60,38 @@ return {
                 local ft = vim.bo[args.buf].filetype
                 for _, cfg in pairs(vim.lsp.config) do
                     if cfg.cmd and vim.tbl_contains(cfg.filetypes or {}, ft)
-                        then
-                            vim.lsp.start(cfg, { bufnr = args.buf })
-                        end
+                    then
+                        vim.lsp.start(cfg, { bufnr = args.buf })
                     end
                 end
-            })
+            end
+        })
 
-            -- diagnostic
+        -- diagnostic
         vim.diagnostic.config({
-            virtual_text = {
-                spacing = 2,
-                source = "if_many",
-                prefix = "●", -- 任意
-            },
+            -- virtual_text = {
+            --     spacing = 2,
+            --     source = "if_many",
+            --     prefix = "●", -- 任意
+            -- },
+            virtual_text = false,
             signs = true,
             underline = true,
             update_in_insert = true,
             severity_sort = true,
+
+            float = {
+                border = "rounded",
+                source = true,
+                header = "",
+                prefix = "",
+            },
+
+            jump = {
+                float = true,
+            }
         })
 
         vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "LSP Rename Symbol" })
-
     end,
 }

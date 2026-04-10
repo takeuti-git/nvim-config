@@ -27,10 +27,10 @@ map('n', '*', '*zz')
 map('n', '#', '#zz')
 
 -- ~/.config/nvim/init.luaを開く
-map('n', '<leader>init', ':edit $MYVIMRC<CR>')
+map('n', '<leader>init', ':e $MYVIMRC<CR>')
 
 -- netrw
-map("n", "<leader>e", "<cmd>Ex<CR>")
+map("n", "<leader>E", "<cmd>Ex<CR>")
 
 
 local builtin = require("telescope.builtin")
@@ -40,9 +40,26 @@ map("n", "<leader>fb", builtin.buffers, { desc = "Buffers" })
 map("n", "<leader>fh", builtin.help_tags, { desc = "Help" })
 
 -- TIP: Disable arrow keys in normal mode
-map({"n", "i"}, '<left>', '<cmd>echo "Use h to move!!"<CR>')
-map({"n", "i"}, '<right>', '<cmd>echo "Use l to move!!"<CR>')
-map({"n", "i"}, '<up>', '<cmd>echo "Use k to move!!"<CR>')
-map({"n", "i"}, '<down>', '<cmd>echo "Use j to move!!"<CR>')
+map({ "n", "i" }, '<left>', '<cmd>echo "Use h to move!!"<CR>')
+map({ "n", "i" }, '<right>', '<cmd>echo "Use l to move!!"<CR>')
+map({ "n", "i" }, '<up>', '<cmd>echo "Use k to move!!"<CR>')
+map({ "n", "i" }, '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
 map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+map('n', '<leader>e', vim.diagnostic.open_float)
+
+map("n", "]d", function()
+    vim.diagnostic.jump({ count = 1 })
+end, { desc = "Next diagnostics" })
+
+map("n", "[d", function()
+    vim.diagnostic.jump({ count = -1 })
+end, { desc = "Previous diagnostics" })
+
+map("n", "]e", function()
+    vim.diagnostic.jump({ count = 1, severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Next diagnostics (ERROR only)" })
+
+map("n", "[e", function()
+    vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Previous diagnostics (ERROR only)" })
