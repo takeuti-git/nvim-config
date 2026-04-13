@@ -92,6 +92,20 @@ return {
             }
         })
 
-        vim.keymap.set("n", "<F2>", vim.lsp.buf.rename, { desc = "LSP Rename Symbol" })
+        vim.api.nvim_create_user_command("LspRename", function(opts)
+            vim.lsp.buf.rename(opts.args)
+        end, { nargs = 1 })
+
+        vim.keymap.set("n", "<leader>re", function()
+            local current = vim.fn.expand("<cword>")
+            vim.api.nvim_create_autocmd("CmdwinEnter", {
+                once = true,
+                callback = function()
+                    vim.api.nvim_buf_set_lines(0, -1, -1, false, { "LspRename: " .. current })
+                    vim.cmd("normal! G$")
+                end,
+            })
+            vim.fn.feedkeys("q:", "n")
+        end, { desc = "LSP Rename Symbol" })
     end,
 }
