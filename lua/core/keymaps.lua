@@ -82,3 +82,7 @@ map("n", "gD", function()
         end
     )
 end)
+
+map("n", "<leader>:", function()
+    vim.fn.feedkeys("q:", "n")
+end)
