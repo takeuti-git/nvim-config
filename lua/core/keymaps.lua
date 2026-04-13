@@ -63,3 +63,22 @@ end, { desc = "Next diagnostics (ERROR only)" })
 map("n", "[e", function()
     vim.diagnostic.jump({ count = -1, severity = vim.diagnostic.severity.ERROR })
 end, { desc = "Previous diagnostics (ERROR only)" })
+
+map("n", "gD", function()
+    vim.lsp.buf_request(0, "textDocument/definition",
+        vim.lsp.util.make_position_params(0, 'utf-8'),
+        function(err, result, _, _)
+            if err or not result then return end
+
+            local locations = vim.islist(result) and result or { result }
+
+            if #locations ~= 1 then
+                vim.lsp.buf.definition()
+                return
+            end
+
+            vim.cmd("vsplit")
+            vim.lsp.util.show_document(locations[1], 'utf-8', { focus = true })
+        end
+    )
+end)
