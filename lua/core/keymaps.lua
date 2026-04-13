@@ -86,3 +86,14 @@ end)
 map("n", "<leader>:", function()
     vim.fn.feedkeys("q:", "n")
 end)
+
+map("n", "<leader>cd", function()
+    local dir
+    if vim.bo.filetype == "netrw" then
+        dir = vim.b.netrw_curdir
+    else
+        dir = vim.fn.expand("%:h")
+    end
+    vim.cmd("lcd " .. vim.fn.fnameescape(dir))
+    vim.notify("cd: " .. dir, vim.log.levels.INFO)
+end)
