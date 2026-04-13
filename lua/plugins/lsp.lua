@@ -101,7 +101,7 @@ return {
             vim.api.nvim_create_autocmd("CmdwinEnter", {
                 once = true,
                 callback = function()
-                    vim.api.nvim_buf_set_lines(0, -1, -1, false, { "LspRename: " .. current })
+                    vim.api.nvim_buf_set_lines(0, -1, -1, false, { "LspRename " .. current })
                     vim.cmd("normal! G$")
                 end,
             })
