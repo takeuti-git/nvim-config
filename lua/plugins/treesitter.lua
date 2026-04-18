@@ -1,26 +1,21 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  lazy = false,
-  build = ":TSUpdate",
-  opts = {
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false,
-    },
-    indent = {
-      enable = true,
-    },
-  },
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+        require("nvim-treesitter").setup({
+            highlight = {
+                enable = true,
+            },
+            indent = {
+                enable = true,
+            },
+        })
 
-  -- config = function()
-  --     require("nvim-treesitter.configs").setup({
-  --         highlight = {
-  --             enable = true,
-  --             additional_vim_regex_highlighting = false,
-  --         },
-  --         indent = {
-  --             enable = true,
-  --         },
-  --     })
-  -- end,
+        vim.api.nvim_create_autocmd("FileType", {
+            callback = function()
+                pcall(vim.treesitter.start)
+            end,
+        })
+    end,
 }
