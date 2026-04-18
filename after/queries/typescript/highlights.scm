@@ -8,6 +8,7 @@
 (named_imports ["{" "}"] @punctuation.bracket.import)
 (array ["[" "]"] @punctuation.bracket.array)
 (object ["{" "}"] @punctuation.bracket.object)
+(object_type ["{" "}"] @punctuation.bracket.object_type)
 
 (lexical_declaration ["const" "let"] @keyword.var_declare)
 (public_field_definition ["static"] @keyword.static)
