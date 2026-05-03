@@ -3,7 +3,17 @@ return {
     lazy = false,
     build = ":TSUpdate",
     config = function()
-        require("nvim-treesitter").setup({
+        require("nvim-treesitter.config").setup({
+            ensure_installed = {
+                "lua",
+                "c",
+                "jinja2",
+                "python",
+                "javascript",
+                "typescript",
+                "html",
+                "json"
+            },
             highlight = {
                 enable = true,
             },
