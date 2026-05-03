@@ -9,11 +9,10 @@ return {
         vim.api.nvim_set_hl(0, "@string",      { link = "String" })
         vim.api.nvim_set_hl(0, "@keyword",     { link = "Keyword" })
         vim.api.nvim_set_hl(0, "@comment",     { link = "Comment" })
-        vim.api.nvim_set_hl(0, "@function",    { link = "Function" })
-        vim.api.nvim_set_hl(0, "@variable",    { link = "Identifier" })
-        vim.api.nvim_set_hl(0, "@variable.builtin",    { link = "Identifier" })
+        vim.api.nvim_set_hl(0, "@function",    { link = "@none" })
+        -- vim.api.nvim_set_hl(0, "@variable",    { link = "Identifier" })
         vim.api.nvim_set_hl(0, "@variable.builtin",    { link = "Type" })
-        vim.api.nvim_set_hl(0, "@variable",    { link = "typescriptIdentifierName" })
+        vim.api.nvim_set_hl(0, "@variable.typescript",    { link = "typescriptIdentifierName" })
         vim.api.nvim_set_hl(0, "@type.typescript",    { link = "@none" })
         vim.api.nvim_set_hl(0, "@constant",    { link = "@none" })
         vim.api.nvim_set_hl(0, "@operator.typescript",    { link = "typescriptBinaryOp" })
@@ -27,9 +26,10 @@ return {
         vim.api.nvim_set_hl(0, "@keyword.var_declare", { link = "Identifier" }) -- ユーザー定義
         vim.api.nvim_set_hl(0, "@keyword.arrow", { link = "Type" }) -- ユーザー定義
 
-        vim.api.nvim_set_hl(0, "@punctuation.bracket",      { link = "@none" })
+        vim.api.nvim_set_hl(0, "@punctuation.bracket.typescript",      { link = "@none" })
         vim.api.nvim_set_hl(0, "@punctuation.bracket.args", { link = "@none" }) -- ユーザー定義
         vim.api.nvim_set_hl(0, "@punctuation.bracket.import", { link = "Function" }) -- ユーザー定義
+        vim.api.nvim_set_hl(0, "@punctuation.bracket.export", { link = "Function" }) -- ユーザー定義
         vim.api.nvim_set_hl(0, "@punctuation.bracket.array", { link = "Normal" }) -- ユーザー定義
         vim.api.nvim_set_hl(0, "@punctuation.bracket.object", { link = "Function" }) -- ユーザー定義
         vim.api.nvim_set_hl(0, "@punctuation.bracket.object_type", { link = "Function" }) -- ユーザー定義
@@ -42,5 +42,23 @@ return {
         vim.api.nvim_set_hl(0, "@function.method.call", { link = "@none" })
         vim.api.nvim_set_hl(0, "@function.method", { link = "@none" })
         vim.api.nvim_set_hl(0, "@keyword.conditional.ternary", { link = "@none" })
+
+        vim.api.nvim_set_hl(0, "@keyword.function", { link = "Function" })
+        vim.api.nvim_set_hl(0, "@keyword.this", { link = "@none" })
+        vim.api.nvim_set_hl(0, "@lsp.type.function", { link = "@none" })
+        vim.api.nvim_set_hl(0, "@lsp.type.interface", { link = "Type" })
+        vim.api.nvim_set_hl(0, "@lsp.type.property", { link = "@none" })
+
+        vim.api.nvim_set_hl(0, "@type", { link = "Type" })
+        vim.api.nvim_set_hl(0, "@type.predefined", { link = "Type" })
+        -- vim.api.nvim_set_hl(0, "@keyword.operator", { link = "Type" })
+        vim.api.nvim_set_hl(0, "@keyword.as", { link = "@none" })
+        vim.api.nvim_set_hl(0, "@keyword.operator", { link = "Type" })
+        vim.api.nvim_set_hl(0, "@keyword.is", { link = "Type", force = true })
+        vim.api.nvim_set_hl(0, "@punctuation.argument_list", { link = "Normal"})
+        vim.api.nvim_set_hl(0, "@punctuation.bracket.python", { link = "Normal"})
+
+
+        vim.api.nvim_set_hl(0, "@keyword.f_string.python", { link = "@none" })
     end,
 }
