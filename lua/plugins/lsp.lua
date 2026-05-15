@@ -51,22 +51,6 @@ return {
             },
         })
 
-        ------------------------------------
-        -- FileType起動
-        ------------------------------------
-
-        vim.api.nvim_create_autocmd("FileType", {
-            callback = function(args)
-                local ft = vim.bo[args.buf].filetype
-                for _, cfg in pairs(vim.lsp.config) do
-                    if cfg.cmd and vim.tbl_contains(cfg.filetypes or {}, ft)
-                    then
-                        vim.lsp.start(cfg, { bufnr = args.buf })
-                    end
-                end
-            end
-        })
-
         -- diagnostic
         vim.diagnostic.config({
             -- virtual_text = {
