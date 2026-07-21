@@ -51,6 +51,34 @@ return {
             },
         })
 
+        local registry = require("mason-registry")
+        local vue_pkg = registry.get_package("vue-language-server")
+
+        local vue_plugin = vue_pkg:get_install_path()
+            .. "/node_modules/@vue/typescript-plugin"
+
+        vim.lsp.config("ts_ls", {
+            capabilities = capabilities,
+
+            filetypes = {
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "vue",
+            },
+
+            init_options = {
+                plugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        location = vue_plugin,
+                        languages = { "vue" },
+                    },
+                },
+            },
+        })
+
         -- diagnostic
         vim.diagnostic.config({
             -- virtual_text = {
