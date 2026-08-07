@@ -60,3 +60,5 @@ opt.list = true
 opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 opt.confirm = true
 
+vim.g.netrw_banner = 0
+vim.g.netrw_bufsettings = "noma nomod no rnu nobl nowrap ro"
