@@ -32,6 +32,8 @@ map('n', '<leader>init', ':e $MYVIMRC<CR>')
 -- netrw
 map("n", "<leader>E", "<cmd>Ex<CR>")
 
+-- terminal
+map("t", "<Esc>", "<C-\\><C-n>", { desc = "exit terminal mode" })
 
 local builtin = require("telescope.builtin")
 map("n", "<leader>ff", builtin.find_files, { desc = "Find Files" })
